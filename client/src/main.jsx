@@ -6,8 +6,8 @@ import { CartProvider } from './CartContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 createRoot(document.getElementById('root')).render(
-<Router>
+<BrowserRouter basename="/srl_homefoods">
   <CartProvider>
     <App />
   </CartProvider>
-</Router>)
+</BrowserRouter>)
