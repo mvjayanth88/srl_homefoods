@@ -174,7 +174,7 @@ const handlePayment = () => {
                   <div className='col-sm-12 mb-2 item' key={item.name}>
                   <div className="card p-2">
                     <div className="pic">
-                        <img className="img-thumbnail me-3" src={`client/src/assets/${item.image}`} />
+                        <img className="img-thumbnail me-3" src={`/srl_homefoods/assets/${item.image}`} />
                     </div>
                     <div className="desc">
                         <h5 className="mb-2">{item.name}</h5>
