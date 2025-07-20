@@ -5,7 +5,7 @@ import './App.css';
 
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
-import { CartContext } from './CartContext';
+import { CartContext } from './src/CartContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
