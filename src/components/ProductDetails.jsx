@@ -71,7 +71,7 @@ const removeItem = (id, event) => {
     return(
     <>
     <div className='product-card card' id={`product-` + prod.id}>
-            <div className='product-img'><img src={`/client/src/assets/${prod.image}`} alt={prod.name} className='' /></div>
+            <div className='product-img'><img src={`/srl_homefoods/assets/${prod.image}`} alt={prod.name} className='' /></div>
             <div className='product-desc'>
                 <h3 className='product-title'>{prod.name}</h3>
                 <p className='product-price'>₹ {prod.price} / KG</p>

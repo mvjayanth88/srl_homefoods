@@ -5,7 +5,7 @@ import './App.css';
 
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
-import { CartContext } from './src/CartContext';
+import { CartContext } from './CartContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -59,4 +59,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
