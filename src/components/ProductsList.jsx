@@ -4,7 +4,8 @@ import ProductDetails from './ProductDetails';
 
 
 function ProductsList(){
-const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
 
 useEffect(() => {
   const table = 'products'; // or 'orders', 'order_items'
@@ -13,7 +14,8 @@ useEffect(() => {
 
   axios.get(`${import.meta.env.VITE_API_URL}/api/${table}`)
     .then(response => {
-      setProducts(response.data); // update relevant state
+      setProducts(response.data); 
+      setLoading(false);
       console.log(`${table} data:`, response.data);
     })
     .catch(error => {
@@ -25,8 +27,14 @@ useEffect(() => {
 
 
     return(
-        <>
+      <>
+      
       <div className='mt-4 content-bg'>
+{loading ? <div className="my-3 text-center">
+        <div className="spinner-border" role="status"></div>
+  <p>Loading</p></div>
+       : (
+        <>
         <h3 className='mt-0 mb-4'>Veg & Non-Veg Pickles</h3>
         <div className='products-list row'>
         {products.map((prod, index) => (
@@ -35,8 +43,12 @@ useEffect(() => {
           </div>
         ))}
         </div>
+       </>
+      )}
       </div>
+     
       </>
+        
     )
 
 }

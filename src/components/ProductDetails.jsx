@@ -34,7 +34,7 @@ const addToCart = (prod) => {
     const item = {};
     item.id = prod.id;
     item.name = prod.name;
-    item.price = pr_price * _quantity;
+    item.price = prod.price;
     item.image = prod.image;
     item.weight = _weight;
     item.quantity = parseInt(_quantity);
