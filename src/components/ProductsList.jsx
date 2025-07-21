@@ -9,6 +9,8 @@ const [products, setProducts] = useState([]);
 useEffect(() => {
   const table = 'products'; // or 'orders', 'order_items'
 
+  console.log("API URL:", import.meta.env.VITE_API_URL);
+
   axios.get(`${import.meta.env.VITE_API_URL}/api/${table}`)
     .then(response => {
       setProducts(response.data); // update relevant state
