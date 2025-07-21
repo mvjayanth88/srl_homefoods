@@ -36,10 +36,20 @@ function Header(){
                          <a className="navbar-brand" href="#"> 
                          <h3>Sri Rajyalakshmi <small>Authentic Home Foods</small></h3></a>
 
-                    <div className="ml-auto">
+                    <div className="ml-auto d-flex">
+    <Link className='nav-link cart d-block d-lg-none me-3' to="/Cart">
+    {cart && cart.length > 0 &&
+    <span className="badge" id="cart-count">{cart && cartQuantity > 0 ? cartQuantity : 0}</span>
+    }
+    <i className="bi bi-cart2"></i>
+    </Link>
+
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id='navbar-toggler'>
       <i className='bi bi-list'></i>
     </button>
+
+    
+
                         <div className="collapse navbar-collapse" id='navbarNav'>
                     <ul className="nav navbar-nav">
                         <li className="nav-item">
