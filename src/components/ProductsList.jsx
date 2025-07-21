@@ -9,7 +9,7 @@ const [products, setProducts] = useState([]);
 useEffect(() => {
   const table = 'products'; // or 'orders', 'order_items'
 
-  axios.get(`http://localhost:5000/api/${table}`)
+  axios.get(`${import.meta.env.VITE_API_URL}/api/${table}`)
     .then(response => {
       setProducts(response.data); // update relevant state
       console.log(`${table} data:`, response.data);

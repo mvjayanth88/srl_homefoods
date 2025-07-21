@@ -15,7 +15,6 @@ const [paymentSucess, setPaymentSucess] = useState(false);
 const [orderId, setOrderId] = useState(null);
 
 const removeFromCart = (id) => {
-    debugger;
     setCart(prev => prev.filter(item => item.id !== id));
 };
 
@@ -48,7 +47,7 @@ const orderData = {
 };
 
 try{
-  const response = await axios.post('http://localhost:5000/api/insert', {
+  const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/insert`, {
   table: 'orders',
   data: orderData
 });
@@ -72,7 +71,7 @@ const createOrderItems = async (orderData) => {
         item_weight: parseFloat(item.weight),
       };
 
-      return axios.post('http://localhost:5000/api/insert', {
+      return axios.post(`${import.meta.env.VITE_API_URL}/api/insert`, {
         table: 'order_items',
         data: orderItem,
       });
@@ -85,8 +84,6 @@ const createOrderItems = async (orderData) => {
     });
 
     // ✅ Do something after all items are posted
-
-    debugger;
     const orderDetails = {
       orderData: orderData,
       items: cart.map(item => ({
@@ -109,7 +106,7 @@ const createOrderItems = async (orderData) => {
 };
 
 const sendEmailToBusiness = (orderDetails) => {
-  axios.post('http://localhost:5000/api/send-email', orderDetails)
+  axios.post(`${import.meta.env.VITE_API_URL}/api/send-email`, orderDetails)
   .then(res => {
     console.log('Business notified via email');
   })
