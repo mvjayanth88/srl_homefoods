@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import pkg from 'pg';
 import { sendEmailToBusiness } from './SendOrderEmail.js';
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+const baseUrl = import.meta.env.VITE_API_URL;
 
 dotenv.config();
 
