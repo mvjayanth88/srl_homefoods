@@ -108,12 +108,12 @@ const removeItem = (id, event) => {
                         <small className="d-block">* Inclusive of all taxes</small>
                         </div>
                     </div>
-                    <button onClick={() => addToCart(prod)} className='btn btn-green btn-addtocart mt-3'>Add to cart</button>
+                    <button onClick={() => addToCart(prod)} className='btn btn-secondary btn-addtocart mt-3'>Add to cart</button>
                 </div>
                 
                 </div>
 
-                <button onClick={(e) => selectOptions(prod, e)} className='btn btn-secondary btn-selectoptions'>Selelct options</button>
+                <button onClick={(e) => selectOptions(prod, e)} className='btn btn-primary btn-selectoptions'>Selelct options</button>
                 
 
             </div>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import FloatingInput from "./FloatingInput";
 import QuantityManager from "./QuantityManager";
 import axios from "axios";
+import Footer from "./Footer";
 
 const Cart = () => {
 
@@ -160,7 +161,13 @@ const handlePayment = () => {
 
     return(
         <>
-        <div className='mt-4 content-bg'>
+        <div className="container">
+           <div className='page-title'>
+          <h2 className='mt-4 mb-4'>Shopping Cart
+          <small className='d-block'>Your cart is currently empty.</small>
+        </h2>
+        </div>
+      <div className='mt-4 content-bg'>
             {cart && cartQuantity > 0 && !paymentSucess &&
             <>
             <h3 className='mt-0 mb-4'>Cart</h3>
@@ -231,7 +238,7 @@ const handlePayment = () => {
             <>
             <div className="text-center">
                 <h5 className="mt-4 mb-4">Your cart is empty</h5>
-                <Link to="/Products" className="btn btn-yellow mb-4">Browse Products</Link>
+                <Link to="/Products" className="btn btn-secondary mb-4">Browse Products</Link>
             </div>
 
             </>
@@ -248,6 +255,11 @@ const handlePayment = () => {
             }
 
         </div>
+        </div>
+
+
+        <Footer></Footer>
+        
         </>
     )
 }

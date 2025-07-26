@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lily+Script+One&family=Vibur&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lily+Script+One&family=Vibur&display=swap');
+
 :root {
   --dark-red: #8B0000;
   --green: #228B22;
@@ -5,6 +9,10 @@
   --dark-red-hover: #a00000;
   --green-hover: #2ca02c;
   --yellow-hover: #ffdd33;
+  --beige: #E9E3DF;
+  --orange: #FF7A30;
+  --blue: #465C88;
+  --black: #000000;
 }
 
 #root{
@@ -12,7 +20,7 @@
 }
 
 body{
-  background: beige;
+  background: var(--beige);
   place-items: unset;
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
@@ -25,7 +33,13 @@ h1, h2, h3 {
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-  color: var(--green);
+  color: var(--black);
+}
+
+.page-title small{
+  font-size: 14px;
+  color: var(--bs-gray-800);
+  margin-top: 10px;
 }
 
 small{
@@ -35,7 +49,22 @@ small{
 /* Buttons */
 .btn{
   transition: none;
+  border: none;
 }
+.btn:active{
+  box-shadow: inset 0 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn.btn-primary, .btn.btn-primary:active{
+  background-color: var(--orange);
+  color: white;
+}
+.btn.btn-secondary, .btn.btn-secondary:active{
+  background-color: var(--blue);
+  color: white;
+}
+
+
 .btn-dark-red {
   background-color: var(--dark-red);
   color: #fff;
@@ -44,6 +73,7 @@ small{
   background-color: var(--dark-red-hover);
   color: #fff;
 }
+
 
 .btn-green {
   background-color: var(--green);
@@ -135,7 +165,7 @@ small{
 }
 
 header{
-  background: brown;
+  background: var(--orange);
   color: white;
 }
 header .navbar{
@@ -145,10 +175,10 @@ header .navbar{
   color: white;
   display: flex;
   align-items: center;
-  margin: 10px 0;
+  margin: 0;
 }
 .navbar-brand img{
-  max-width: 60px;
+  max-width: 200px;
   margin-right: 20px;
 }
 .navbar-brand h3{
@@ -170,8 +200,7 @@ header .navbar{
 }
 
 .navbar-nav .nav-link{
-height: 40px;
-padding: 10px 50px;
+padding: 15px !important;
 line-height: 25px;
 }
 
@@ -214,6 +243,30 @@ line-height: 25px;
   background: var(--yellow-hover);
 }
 
+.tabs{
+  display: flex;
+  justify-content: center;
+}
+
+.nav.nav-pills .nav-link{
+  color: var(--bs-gray-600);
+  cursor: pointer;
+  border-radius: 0;
+  padding: 25px 15px;
+}
+.nav.nav-pills .nav-link{
+  border-top: 3px solid white;
+  font-weight: 500;
+}
+.nav.nav-pills .nav-link:hover{
+  background: var(--bs-gray-200);
+}
+.nav.nav-pills .nav-item.active .nav-link{
+  border-top: 3px solid var(--blue);
+  color: var(--blue);
+}
+
+
 .content-bg{
   padding: 30px;
   background: white;
@@ -229,9 +282,12 @@ line-height: 25px;
   height: 100%;
   position: relative;
   overflow: hidden;
+  border: none;
+  border-radius: 0;
+  background: none;
 }
 .products-list .product-card:hover{
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 35px 35px rgba(0, 0, 0, 0.2);
 }
 .product-card .product-desc{
   padding: 15px;
@@ -239,15 +295,31 @@ line-height: 25px;
 }
 .product-card .product-desc .product-title{
   font-size: 18px;
-  color: var(--dark-red);
+  color: var(--black);
 }
+.products-list .product-title.text-orange{
+  color: var(--orange);
+}
+.text-orange{
+  color: var(--orange);
+}
+
 .product-card .product-img{
-  width: 100%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
 }
 .product-card .product-img img{
-  width: 100%;
-  height: 250px;
-  border-radius: 5px 5px 0 0;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
 }
 
 .product-card .pr-options{
@@ -290,6 +362,8 @@ line-height: 25px;
   box-shadow: none;
   height: 37px;
 }
+
+
 .quantity{
   display: flex;
   border: 1px solid var(--bs-gray-600);
@@ -336,14 +410,72 @@ line-height: 25px;
   right: 10px;
 }
 
+
+.home-banner{
+  background: var(--black);
+  height: 400px;
+}
+.home-banner .carousel-inner{
+  height: 400px;
+}
+.home-banner .carousel-inner .carousel-item{
+  height: 400px;
+  position: relative;
+}
+.home-banner .carousel-inner .carousel-item img{
+  position: absolute;
+  top: -50%;
+}
+.home-banner .carousel-inner .carousel-caption{
+  text-align: left;
+}
+.home-banner .carousel-inner .carousel-caption h2{
+  color: white;
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 60px;
+}
+.home-banner .carousel-inner .carousel-caption p{
+  font-size: 30px;
+  font-family: "Vibur", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+footer{
+  background: var(--black);
+  color: var(--bs-gray-500);
+  padding: 20px 0;
+}
+footer h5{
+  color: white;
+  font-family: "Roboto Serif", serif;
+}
+footer a, footer a:hover, footer a:active{
+  color: var(--bs-gray-500);
+  text-decoration: none;
+}
+footer a:hover, footer a:active{
+  text-decoration: underline;
+}
+
+footer .f-note{ 
+  color: var(--bs-gray-600);
+  font-size: 14px;
+  margin:0;
+  padding: 15px 0;
+  border-top:1px solid var(--bs-gray-800);
+}
+
 @media only screen and (max-width:992px){
 #navbarNav{
-          position: absolute;
-        background: var(--green);
+        position: absolute;
+        background: var(--blue);
         left: 0;
         right: 0;
         z-index: 9999;
-        top: 73px;
+        top: 65px;
         box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
 }
 #navbarNav .nav{
@@ -356,7 +488,7 @@ line-height: 25px;
   border-radius: 5px;
 }
 #navbarNav .nav .nav-link:focus{
-  background: var(--green-hover);
+  background: var(--blue);
 }
 .product-card .product-img,
 .product-card .product-img img{
@@ -364,9 +496,29 @@ line-height: 25px;
 }
 
 }
+
 @media only screen and (max-width:768px){
   .product-card .product-img,
   .product-card .product-img img{
     height: 250px;
   }
+
+.home-banner{
+  height: 300px;
 }
+
+.home-banner .carousel-inner{
+  height: 300px;
+}
+.home-banner .carousel-inner .carousel-item{
+  height: 300px;
+  position: relative;
+}
+.home-banner .carousel-inner .carousel-item img{
+  width: 200%;
+  position: absolute;
+  top: 0;
+}
+
+}
+

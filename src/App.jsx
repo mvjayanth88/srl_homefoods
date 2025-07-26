@@ -41,7 +41,6 @@ function App() {
 
     </div>
     }
-      <div className='container'>
           {/* <GoogleOAuthProvider clientId="805060689092-s77k13kp9hj6k1e8obsvao2fpurgucli.apps.googleusercontent.com">
           <Login>
           </Login> */}
@@ -54,7 +53,6 @@ function App() {
             
           {/* </GoogleOAuthProvider> */}
 
-      </div>
       </>
   )
 }

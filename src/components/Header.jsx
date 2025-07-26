@@ -33,8 +33,10 @@ function Header(){
         <header>
                 <nav className="navbar navbar-expand-lg">
                        <div className="container d-flex">
-                         <a className="navbar-brand" href="#"> 
-                         <h3>Sri Rajyalakshmi <small>Authentic Home Foods</small></h3></a>
+                         <a className="navbar-brand" href=""> 
+                          <img src='/srl_homefoods/assets/logo.png' />
+                         {/* <h3>Sri Rajyalakshmi <small>Authentic Home Foods</small></h3> */}
+                         </a>
 
                     <div className="ml-auto d-flex">
     <Link className='nav-link cart d-block d-lg-none me-3' to="/Cart">
