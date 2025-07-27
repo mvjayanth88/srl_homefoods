@@ -1,0 +1,30 @@
+<html>
+    <head></head>
+    <body>
+        <header style="background-color: #ff7a30; padding: 5px 15px; display: block;">
+            <img src="https://mvjayanth88.github.io/srl_homefoods/assets/logo.png" width="180px" style="display: inline-block;" />
+        </header>
+        <section style="background-color: #e9e3df; padding: 30px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+          <h2 style="color: #c0392b;">Thank you for your order!</h2>
+      <p>Dear ${orderData.customer_name},</p>
+      
+      <p>We've received your order and will start preparing it shortly. Every item is made fresh to ensure the best taste and quality.</p>
+
+      <p><strong>Order Details:</strong></p>
+      <ul>
+        <li><strong>Order ID:</strong> ${orderData.id}</li>
+        <li><strong>Date:</strong> ${date}</li>
+      </ul>
+
+      <p>You'll receive another update when your order is packed and ready for dispatch.</p>
+
+      <p>Thanks again for choosing <strong>Rajyalakshmi Home Foods</strong>!</p>
+
+      <p style="margin-top: 30px;">Warm regards,<br />
+      <strong>Rajyalakshmi Home Foods</strong><br />
+      📞 +91-6302417541<br />
+      📍 Hyderabad, Telangana
+      </p>
+        </section>
+    </body>
+</html>
