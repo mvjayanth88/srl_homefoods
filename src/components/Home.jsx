@@ -1,32 +1,8 @@
-import { useState, useEffect, useContext } from 'react';
-import axios from "axios";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
-import { CartContext } from '../CartContext';
+
 
 const Home = () => {
-
-  const { products, setProducts } = useContext(CartContext);
-  
-useEffect(() => {
-  const table = 'products'; // or 'orders', 'order_items'
-  console.log("API URL:", import.meta.env.VITE_API_URL);
-  const rlhf_products = sessionStorage.getItem('rlhf_products') != null ? JSON.parse(sessionStorage.getItem('rlhf_products')) : null;
-
-  if(rlhf_products === null){
-    axios.get(`${import.meta.env.VITE_API_URL}/api/${table}`)
-        .then(response => {
-          sessionStorage.setItem('rlhf_products', JSON.stringify(response.data));
-          setProducts(response.data);
-        })
-        .catch(error => {
-          console.error(`Error fetching ${table}:`, error.message);
-        });
-  }
-
-
-}, []);
-
 
   return(
         <>
@@ -36,21 +12,21 @@ useEffect(() => {
   <div className="carousel-inner">
     <div className="carousel-item active">
       <img className="d-block w-100" src="/srl_homefoods/assets/banner_1.jpg" alt="First slide" />
-      <div class="carousel-caption d-none d-md-block">
+      <div className="carousel-caption d-none d-md-block">
       <h2>Authentic <br />Andhra <br />Foods.</h2>
       <p>Flavors from the Heart of Andhra.</p>
       </div>
     </div>
     <div className="carousel-item">
       <img className="d-block w-100" src="/srl_homefoods/assets/banner_2.jpg" alt="Second slide" />
-      <div class="carousel-caption d-none d-md-block text-end">
+      <div className="carousel-caption d-none d-md-block text-end">
       <h2>Handmade <br/>Homely <br/>Honest.</h2>
       <p>Authentic taste begins with the purest ingredients — just like home.</p>
       </div>
     </div>
     <div className="carousel-item">
       <img className="d-block w-100" src="/srl_homefoods/assets/banner_3.jpg" alt="Third slide" />
-            <div class="carousel-caption d-none d-md-block">
+            <div className="carousel-caption d-none d-md-block">
       <h2>Your Order, <br/>Made Fresh <br/>Just for You.</h2>
       <p>Only fresh — every order made on demand and dispatched in 24 hours.</p>
       </div>

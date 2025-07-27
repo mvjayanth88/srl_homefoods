@@ -14,6 +14,7 @@ import Header from './components/Header';
 import ProductsList from './components/ProductsList';
 import Cart from './components/Cart';
 // import Login from './components/GoogleLogin';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const { cart, setCart } = useContext(CartContext);
@@ -44,7 +45,7 @@ function App() {
           {/* <GoogleOAuthProvider clientId="805060689092-s77k13kp9hj6k1e8obsvao2fpurgucli.apps.googleusercontent.com">
           <Login>
           </Login> */}
-
+<ScrollToTop />
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/Products' element={<ProductsList />} />

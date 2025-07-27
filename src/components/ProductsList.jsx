@@ -1,31 +1,38 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import ProductDetails from './ProductDetails';
-import { CartContext } from '../CartContext';
 import Footer from './Footer';
 
 function ProductsList(){
   const [loading, setLoading] = useState(true);
-  //const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [activeTab, setActiveTab] = useState('snacks');
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const { products, setProducts } = useContext(CartContext);
-  
-
   useEffect(() => {
-    debugger
-    const rlhf_products = sessionStorage.getItem('rlhf_products') != null ? JSON.parse(sessionStorage.getItem('rlhf_products')) : null;
+  const rlhf_products = sessionStorage.getItem('rlhf_products') != null ? JSON.parse(sessionStorage.getItem('rlhf_products')) : null;
 
-    if(products.length > 0){
-      setProducts(products);
-    var results = products.filter(product => product.type === 'snacks');
-    }
-    else if(rlhf_products != null){
-      setProducts(rlhf_products);
-    var results = rlhf_products.filter(product => product.type === 'snacks');
-    }
+  if(rlhf_products != null){
+    setProducts(rlhf_products);
+    const results = rlhf_products.filter(product => product.type === 'snacks');
     setFilteredProducts(results);
     setLoading(false);
+  }
+  else {
+  const table = 'products'; // or 'orders', 'order_items'
+  console.log("API URL:", import.meta.env.VITE_API_URL);
+    axios.get(`${import.meta.env.VITE_API_URL}/api/${table}`)
+        .then(response => {
+          sessionStorage.setItem('rlhf_products', JSON.stringify(response.data));
+          setProducts(response.data);
+          const results = products.filter(product => product.type === 'snacks');
+          setFilteredProducts(results);
+          setLoading(false);
+        })
+        .catch(error => {
+          console.error(`Error fetching ${table}:`, error.message);
+        });
+  }
 
   }, []);
 
@@ -33,7 +40,6 @@ const filterProducts = (type) => {
   setActiveTab(type);
   const results = products.filter(product => product.type === type);
   setFilteredProducts(results);
-  console.log("products", products)
   console.log(results);
 };
 

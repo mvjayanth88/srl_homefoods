@@ -8,6 +8,7 @@ const { cart, setCart } = useContext(CartContext);
 //const [isVisible, setisVisible] = useState(false);
 
 const selectOptions = (prod, event) => {
+    event.stopPropagation();
     const elements = document.getElementsByClassName('pr-options');
     for (let el of elements) {
     el.classList.remove('show');
@@ -25,10 +26,21 @@ const updateWeight = (prod, e) => {
     document.getElementById(`price-` + prod.id).innerHTML = parseFloat(_newPrice).toFixed(2);
 }
 
-const addToCart = (prod) => {
+const addToCart = (prod, e) => {
+e.stopPropagation();
+const _button = e.currentTarget;
+_button.disabled = true;
+const _text = e.currentTarget.innerHTML;
+const _progressText = '<div class="spinner-border text-light spinner-border-sm" role="status"></div> Adding'; 
+_button.innerHTML = _progressText;
+
+setTimeout(function(){
+_button.innerHTML = _text;
+_button.disabled = false;
+}, 1000);
 
     const _weight = document.getElementById(`pr-weight-` + prod.id).value;
-    const pr_price = parseFloat(prod.price) * parseFloat(_weight);
+    //const pr_price = parseFloat(prod.price) * parseFloat(_weight);
     const _quantity = document.getElementById(`pr-count-` + prod.id).value;
 
     const item = {};
@@ -39,16 +51,29 @@ const addToCart = (prod) => {
     item.weight = _weight;
     item.quantity = parseInt(_quantity);
 
-    const existingItem = cart.find(item => item.id === prod.id && item.weight == parseFloat(_weight));
-
+    const existingItem = cart.find(item => item.id === prod.id && parseFloat(item.weight) == parseFloat(_weight));
     if(existingItem){
-        setCart(el => el.map(elitem => elitem.id === existingItem.id ? { ...elitem, quantity: elitem.quantity + parseInt(_quantity) } : elitem))
+        setCart(el => el.map(elitem => elitem.id === existingItem.id && parseFloat(elitem.weight) === parseFloat(existingItem.weight) ? { ...elitem, quantity: elitem.quantity + parseInt(_quantity) } : elitem))
     }
     else{
         setCart([...cart, item]);
     }
 
+    const _alertDiv = document.createElement('div');
+    const _alert = document.createElement('div');
+    _alert.innerHTML = _weight + " KG " + prod.name + " added to cart successfully!";
+    _alertDiv.id = "AlertNotification";
+    _alertDiv.className = "AlertNotification";
+    _alert.className = "alert alert-warning";
+    _alertDiv.appendChild(_alert);
 
+    setTimeout(function(){
+    document.body.appendChild(_alertDiv);
+    }, 500)
+
+    setTimeout(function(){
+        _alertDiv.remove();
+    }, 3000)
 
 }
 
@@ -68,9 +93,20 @@ const removeItem = (id, event) => {
         _countEl.value =  parseInt(_countEl.value) - 1;
     }
 }
+
+
+const productFocus = (prodId, e) => {
+    if(e.type != 'touchend'){
+        const elements = document.getElementsByClassName('pr-options');
+        for (let el of elements) {
+                el.classList.remove('show');
+        }
+    }
+}
+
     return(
     <>
-    <div className='product-card card' id={`product-` + prod.id}>
+    <div className='product-card card' id={`product-` + prod.id} onTouchEnd={(e) => productFocus(prod.id, e)} onMouseLeave={(e) => productFocus(prod.id, e)}>
             <div className='product-img'><img src={`/srl_homefoods/assets/${prod.image}`} alt={prod.name} className='' /></div>
             <div className='product-desc'>
                 <h3 className='product-title'>{prod.name}</h3>
@@ -108,7 +144,7 @@ const removeItem = (id, event) => {
                         <small className="d-block">* Inclusive of all taxes</small>
                         </div>
                     </div>
-                    <button onClick={() => addToCart(prod)} className='btn btn-secondary btn-addtocart mt-3'>Add to cart</button>
+                    <button id={`addToCart-` + prod.id} onClick={(e) => addToCart(prod, e)} className='btn btn-secondary btn-addtocart mt-3'>Add to cart</button>
                 </div>
                 
                 </div>

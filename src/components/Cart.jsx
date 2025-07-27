@@ -126,6 +126,11 @@ const handlePayment = () => {
   customerInfo.mobile = document.getElementById("mobile").value;
   customerInfo.address = document.getElementById("address").value;
 
+  if(customerInfo.name == "" || customerInfo.email == "" || customerInfo.mobile == ""){
+    alert("Please fill in all required fields.");
+    return
+  }
+
   const options = {
     key: "rzp_test_1AG0IlnBRx7UoO", // Get it from Razorpay Dashboard
     amount: subTotal * 100, // Amount in paise (500.00 INR)
@@ -164,7 +169,20 @@ const handlePayment = () => {
         <div className="container">
            <div className='page-title'>
           <h2 className='mt-4 mb-4'>Shopping Cart
-          <small className='d-block'>Your cart is currently empty.</small>
+          <small className='d-block'>
+            {cart.length > 0 ? (
+              <>
+              {cart.length} item{cart.length > 1 ? "'s" : ''} Added to cart.
+              </>
+            )
+            : (
+              <>
+              Your cart is currently empty.
+              </>
+            )
+            }
+            
+            </small>
         </h2>
         </div>
       <div className='mt-4 content-bg'>
