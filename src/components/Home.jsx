@@ -12,21 +12,21 @@ const Home = () => {
   <div className="carousel-inner">
     <div className="carousel-item active">
       <img className="d-block w-100" src="/srl_homefoods/assets/banner_1.jpg" alt="First slide" />
-      <div className="carousel-caption d-none d-md-block">
+      <div className="carousel-caption">
       <h2>Authentic <br />Andhra <br />Foods.</h2>
       <p>Flavors from the Heart of Andhra.</p>
       </div>
     </div>
     <div className="carousel-item">
       <img className="d-block w-100" src="/srl_homefoods/assets/banner_2.jpg" alt="Second slide" />
-      <div className="carousel-caption d-none d-md-block text-end">
+      <div className="carousel-caption text-end">
       <h2>Handmade <br/>Homely <br/>Honest.</h2>
       <p>Authentic taste begins with the purest ingredients — just like home.</p>
       </div>
     </div>
     <div className="carousel-item">
       <img className="d-block w-100" src="/srl_homefoods/assets/banner_3.jpg" alt="Third slide" />
-            <div className="carousel-caption d-none d-md-block">
+            <div className="carousel-caption">
       <h2>Your Order, <br/>Made Fresh <br/>Just for You.</h2>
       <p>Only fresh — every order made on demand and dispatched in 24 hours.</p>
       </div>
