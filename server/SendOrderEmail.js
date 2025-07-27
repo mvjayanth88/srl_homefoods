@@ -99,7 +99,7 @@ export const sendEmailToBusiness = async (orderDetails) => {
 
   try {
     await transporter.sendMail(mailOptions_forCustomer);
-    console.log('Email sent to business owner');
+    console.log('Email sent to customer');
   } catch (err) {
     console.error('Email error:', err.message);
   }
