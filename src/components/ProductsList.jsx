@@ -16,6 +16,7 @@ function ProductsList(){
     setProducts(rlhf_products);
     const results = rlhf_products.filter(product => product.type === 'snacks');
     setFilteredProducts(results);
+    setActiveTab('snacks');
     setLoading(false);
   }
   else {
@@ -25,8 +26,10 @@ function ProductsList(){
         .then(response => {
           sessionStorage.setItem('rlhf_products', JSON.stringify(response.data));
           setProducts(response.data);
-          const results = products.filter(product => product.type === 'snacks');
+          const results = response.data.filter(product => product.type === 'snacks');
           setFilteredProducts(results);
+          setActiveTab('snacks');
+          console.log(results);
           setLoading(false);
         })
         .catch(error => {
@@ -71,8 +74,8 @@ const filterProducts = (type) => {
        : (
         <>
         <div className='products-list row'>
-          <div className='d-flex tabs'>
-            <ul className='nav nav-pills mb-5'>
+          <div className='tabs mb-5'>
+            <ul className='nav nav-pills'>
             <li className={`nav-item ${activeTab === 'snacks' ? 'active' : ''}`}><a className='nav-link' onClick={() => filterProducts('snacks')}>Namkeen & Khara</a></li>
             <li className={`nav-item ${activeTab === 'vegpickles' ? 'active' : ''}`}><a className='nav-link' onClick={() => filterProducts('vegpickles')}>Veg Pickles</a></li>
             <li className={`nav-item ${activeTab === 'nonvegpickles' ? 'active' : ''}`}><a className='nav-link' onClick={() => filterProducts('nonvegpickles')}>Non-veg Pickles</a></li>

@@ -512,7 +512,6 @@ footer .f-note{
 .home-banner{
   height: 300px;
 }
-
 .home-banner .carousel-inner{
   height: 300px;
 }
@@ -529,5 +528,20 @@ footer .f-note{
   width: 80px;
   height: 80px;
 }
+
+.tabs{
+  margin: 0;
+  display: block;
+  overflow: auto;
+}
+.tabs .nav-pills{
+  display: flex;
+  flex-wrap: nowrap;
+}
+.tabs .nav-pills .nav-link{
+  white-space: nowrap;
+}
+
+
 }
 
